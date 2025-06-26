@@ -13,3 +13,85 @@ venv/
 
 # Logs
 *.log
+
+# Flutter/Dart/Pub
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+flutter_*.png
+
+# Symbolication tools
+app.*.symbols
+
+# Android
+android/.gradle/
+android/captures/
+android/gradle.properties
+android/local.properties
+android/app/key.properties
+android/key.properties
+
+# iOS
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/build/
+ios/DerivedData/
+ios/.dart_tool/
+ios/.flutter-plugins
+ios/.flutter-plugins-dependencies
+ios/.metadata
+ios/.generated/
+
+# macOS
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Pods/
+macos/build/
+macos/.dart_tool/
+macos/.flutter-plugins
+macos/.flutter-plugins-dependencies
+macos/.generated/
+macos/.idea/
+
+# Web
+web/.dart_tool/
+web/.packages
+
+# Windows
+windows/Flutter/
+windows/.dart_tool/
+windows/.packages
+windows/build/
+
+# Linux
+linux/Flutter/
+linux/.dart_tool/
+linux/.packages
+linux/build/
+
+# Coverage
+coverage/
+
+# IDEs & Tools
+.idea/
+.vscode/
+*.iml
+
+# Other
+*.log
+*.tmp
+*.swp
+*.lock
+.DS_Store
+Thumbs.db
+
+# Firebase keys or sensitive files
+*.keystore
+*.jks
+*.p12
+

@@ -16,15 +16,27 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
 class ExpenseViewSet(viewsets.ModelViewSet):
-    queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        # Return only expenses belonging to the logged-in user
-        return Expense.objects.filter(user=self.request.user)
+        user = self.request.user
+        queryset = Expense.objects.filter(user=user)
+
+        # Filter by month and year if provided
+        month = self.request.query_params.get('month')
+        year = self.request.query_params.get('year')
+
+        if month and year:
+            try:
+                month = int(month)
+                year = int(year)
+                queryset = queryset.filter(date__month=month, date__year=year)
+            except ValueError:
+                pass  # silently ignore if invalid
+
+        return queryset
 
     def perform_create(self, serializer):
-        # Automatically associate expense with the user
         serializer.save(user=self.request.user)
 
