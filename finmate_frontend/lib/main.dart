@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:finmate_frontend/features/auth/data/auth_api.dart';
+import 'features/expenses/screens/expense_test_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AuthTestPage(),
+      // home: AuthTestPage(),
+      home: ExpenseTestPage(),
     );
   }
 }
