@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:finmate_frontend/features/expenses/data/expense_api.dart';
+import 'package:finmate_frontend/features/expenses/screens/add_expense_page.dart';
 
 class ExpenseTestPage extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _ExpenseTestPageState extends State<ExpenseTestPage> {
       await _expenseApi.createExpense(
         title: "Test Expense",
         amount: 50.0,
-        category: "FOOD", // MUST be exact
+        category: "FOOD", // must match Django model choices
         date: DateTime.now(),
         customCategoryName: "",
         notes: "Test notes",
@@ -28,14 +29,32 @@ class _ExpenseTestPageState extends State<ExpenseTestPage> {
     }
   }
 
+  void _goToAddExpense() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => AddExpensePage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Test Expenses")),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: _testExpenses,
-          child: Text("Run Expense Flow"),
+      appBar: AppBar(title: Text("Expense Tester")),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: _testExpenses,
+              child: Text("Run Test Expense Flow"),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _goToAddExpense,
+              child: Text("Add Expense via Form"),
+            ),
+          ],
         ),
       ),
     );
