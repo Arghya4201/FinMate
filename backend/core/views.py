@@ -7,6 +7,9 @@ from .serializers import ExpenseSerializer
 from rest_framework import generics, permissions
 from .serializers import RegisterSerializer
 from django.contrib.auth import get_user_model
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 User = get_user_model()
 
@@ -40,3 +43,14 @@ class ExpenseViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        return Response({
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+            "name": getattr(user, 'name', '')  # add more fields if needed
+        })
