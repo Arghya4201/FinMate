@@ -31,21 +31,18 @@ class AuthApi {
   }
 
   /// Register and store tokens
-  Future<Map<String, dynamic>> register(String email, String username, String password, String name) async {
+  Future<Map<String, dynamic>> register(
+      String email, String username, String password, String name) async {
     final res = await _dio.post(
       'auth/register/',
       data: {
         'email': email,
         'username': username,
-        'password': password,
         'name': name,
+        'password': password,
+        'password2': password, // required by backend
       },
     );
-
-    // Optionally save tokens after registration
-    if (res.data.containsKey('access') && res.data.containsKey('refresh')) {
-      await _saveTokens(res.data['access'], res.data['refresh']);
-    }
 
     return res.data;
   }
@@ -78,4 +75,3 @@ class AuthApi {
     await prefs.remove('access_token');
   }
 }
-
