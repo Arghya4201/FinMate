@@ -103,11 +103,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'FinMate',            # your database name
+        'NAME': 'FinMate',            
         'USER': 'admin',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
-        'PORT': '5432',  # default
+        'PORT': '5432',  
     }
 }
 
